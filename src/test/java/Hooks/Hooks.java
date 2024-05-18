@@ -1,6 +1,5 @@
 package hooks;
 
-
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -8,15 +7,13 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.Test;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeTest;
 
+public class Hooks extends Base{
 
-
-public class Base extends PageObject{
-	
 	WebDriver driver;
-	@Test
+	@BeforeTest
 	public void launch()
 	{
 	
@@ -34,7 +31,7 @@ public class Base extends PageObject{
 		driver.findElement(By.xpath("//*[@class='nav-link btn btn-primary']")).click();
 	}
 
-	@AfterClass
+	@AfterTest
 	public void closet()
 	{
 		//driver.close();
