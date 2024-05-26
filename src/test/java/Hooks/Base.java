@@ -2,17 +2,15 @@ package hooks;
 
 import java.time.Duration;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 import pageobjects.CartPage;
+import pageobjects.CheckoutPage;
 import pageobjects.LandingPage;
+import pageobjects.OrderConfirmationPage;
 import pageobjects.ProductCataloguePage;
 
 public class Base {
@@ -22,6 +20,7 @@ public class Base {
 	@Test
 	public void launch() {
 		String productName = "IPHONE 13 PRO";
+		String confirmationMessage="THANKYOU FOR THE ORDER.";
 
 		System.setProperty("webdriver.chrome.driver",
 				"C:\\Users\\hp\\Downloads\\chromedriver-win64 (2)\\chromedriver-win64\\chromedriver.exe");
@@ -40,14 +39,12 @@ public class Base {
 		CartPage cartPage=new CartPage(driver);
 		cartPage.verifyListContainsProduct(productName);
 		cartPage.clickOnChcekOut();
-		Actions action = new Actions(driver);
-		action.sendKeys(driver.findElement(By.cssSelector("[placeholder='Select Country']")), "India").build()
-				.perform();
-		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ta-results")));
-		driver.findElement(By.cssSelector(".ta-item:nth-of-type(2)")).click();
-		driver.findElement(By.cssSelector(".action__submit")).click();
-		String confirmMessage = driver.findElement(By.cssSelector(".hero-primary")).getText();
-		Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
+		CheckoutPage cp=new CheckoutPage(driver);
+		cp.selectCountry("India");
+		cp.waitForloading();
+		cp.clickOnCheckOutButton();
+		OrderConfirmationPage oc=new OrderConfirmationPage(driver);
+		oc.getConfirmation(confirmationMessage);
 
 
 	}
