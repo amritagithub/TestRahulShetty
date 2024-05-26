@@ -3,12 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="Hooks.Base">
+      <class name="hooks.Base">
         <methods>
           <include name="launch"/>
           <include name="closet"/>
         </methods>
-      </class> <!-- Hooks.Base -->
+      </class> <!-- hooks.Base -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
