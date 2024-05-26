@@ -1,42 +1,59 @@
 package hooks;
 
-
-import java.util.List;
+import java.time.Duration;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
+import pageobjects.CartPage;
+import pageobjects.LandingPage;
+import pageobjects.ProductCataloguePage;
 
+public class Base {
 
-public class Base extends PageObject{
-	
 	WebDriver driver;
+
 	@Test
-	public void launch()
-	{
-	
-		System.setProperty("webdriver.chrome.driver", "C:\\Users\\hp\\Downloads\\chromedriver-win64 (2)\\chromedriver-win64\\chromedriver.exe");
-		driver=new ChromeDriver();
+	public void launch() {
+		String productName = "IPHONE 13 PRO";
+
+		System.setProperty("webdriver.chrome.driver",
+				"C:\\Users\\hp\\Downloads\\chromedriver-win64 (2)\\chromedriver-win64\\chromedriver.exe");
+		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		 driver.get("https://rahulshettyacademy.com/angularpractice/shop");
-		List<WebElement> ele=driver.findElements(By.xpath("//button[contains(text(),\"Add\")]"));
-		for(WebElement ele1: ele)
-		{JavascriptExecutor js =(JavascriptExecutor)driver;
-		js.executeScript("arguments[0].style.border='5px dotted yellow'", ele1);
-		
-			ele1.click();
-		}
-		driver.findElement(By.xpath("//*[@class='nav-link btn btn-primary']")).click();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+		// .get("https://rahulshettyacademy.com/client/");
+		LandingPage landingpage = new LandingPage(driver);
+		landingpage.goTo();
+		landingpage.loginApplication("amrita.jha88@gmail.com", "Inno@1423");
+		ProductCataloguePage pc=new ProductCataloguePage(driver);
+		pc.findProductByName(productName);
+		pc.loadingIconAppearWait();
+		pc.loadingIconDissappearWait();
+		pc.clickOnCart();
+		CartPage cartPage=new CartPage(driver);
+		cartPage.verifyListContainsProduct(productName);
+		cartPage.clickOnChcekOut();
+		Actions action = new Actions(driver);
+		action.sendKeys(driver.findElement(By.cssSelector("[placeholder='Select Country']")), "India").build()
+				.perform();
+		//wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".ta-results")));
+		driver.findElement(By.cssSelector(".ta-item:nth-of-type(2)")).click();
+		driver.findElement(By.cssSelector(".action__submit")).click();
+		String confirmMessage = driver.findElement(By.cssSelector(".hero-primary")).getText();
+		Assert.assertTrue(confirmMessage.equalsIgnoreCase("THANKYOU FOR THE ORDER."));
+
+
 	}
 
 	@AfterClass
-	public void closet()
-	{
-		//driver.close();
+	public void closet() {
+		// driver.close();
 	}
 }
