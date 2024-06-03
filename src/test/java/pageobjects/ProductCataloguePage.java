@@ -58,8 +58,9 @@ public class ProductCataloguePage extends AbstractComponents {
 		}
 
 	}
-	public void clickOnCart()
+	public CartPage clickOnCart()
 	{clickOnCart.click();
+	return new CartPage(driver);
 		
 	}
 	

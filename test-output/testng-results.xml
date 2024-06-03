@@ -2,20 +2,20 @@
 <testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2024-05-26T12:50:02 IST" name="Default suite" finished-at="2024-05-26T12:50:12 IST" duration-ms="9404">
+  <suite started-at="2024-06-03T11:45:38 IST" name="Default suite" finished-at="2024-06-03T11:45:45 IST" duration-ms="7287">
     <groups>
     </groups>
-    <test started-at="2024-05-26T12:50:02 IST" name="Default test" finished-at="2024-05-26T12:50:12 IST" duration-ms="9404">
-      <class name="hooks.Base">
-        <test-method signature="launch()[pri:0, instance:hooks.Base@71def8f8]" started-at="2024-05-26T12:50:02 IST" name="launch" finished-at="2024-05-26T12:50:12 IST" duration-ms="9357" status="PASS">
+    <test started-at="2024-06-03T11:45:38 IST" name="Default test" finished-at="2024-06-03T11:45:45 IST" duration-ms="7287">
+      <class name="hooks.SubmitOrder">
+        <test-method signature="launch()[pri:0, instance:hooks.SubmitOrder@53fdffa1]" started-at="2024-06-03T11:45:38 IST" name="launch" finished-at="2024-06-03T11:45:45 IST" duration-ms="7247" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- launch -->
-        <test-method is-config="true" signature="closet()[pri:0, instance:hooks.Base@71def8f8]" started-at="2024-05-26T12:50:12 IST" name="closet" finished-at="2024-05-26T12:50:12 IST" duration-ms="0" status="PASS">
+        <test-method is-config="true" signature="closet()[pri:0, instance:hooks.SubmitOrder@53fdffa1]" started-at="2024-06-03T11:45:45 IST" name="closet" finished-at="2024-06-03T11:45:45 IST" duration-ms="0" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- closet -->
-      </class> <!-- hooks.Base -->
+      </class> <!-- hooks.SubmitOrder -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

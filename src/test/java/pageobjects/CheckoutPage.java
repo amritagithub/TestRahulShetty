@@ -40,10 +40,11 @@ public class CheckoutPage  extends AbstractComponents{
 		waitForElementToAppear(results);
 	}
 	
-	public void clickOnCheckOutButton()
+	public OrderConfirmationPage clickOnCheckOutButton()
 	{
 		selectPaymentMethod.click();
 		submit.click();
+		return new OrderConfirmationPage(driver);
 		
 	}
 }

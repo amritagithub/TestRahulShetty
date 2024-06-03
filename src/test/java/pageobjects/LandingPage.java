@@ -36,11 +36,13 @@ public class LandingPage extends AbstractComponents
 	}
 	
 	//method to login to application
-	public void loginApplication(String useremail, String userpassword)
+	public ProductCataloguePage loginApplication(String useremail, String userpassword)
 	{
 		userEmail.sendKeys(useremail);
 		userPassword.sendKeys(userpassword);
 		loginButton.click();
+		return new ProductCataloguePage(driver);
+		
 	}
 	
 	public void goTo()

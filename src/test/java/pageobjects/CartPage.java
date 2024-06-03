@@ -37,9 +37,10 @@ public class CartPage extends AbstractComponents{
 
 		}
 	}
-	public void clickOnChcekOut()
+	public CheckoutPage clickOnChcekOut()
 	{
 		checkOUtButton.click();
+		return new CheckoutPage(driver);
 	}
 	
 

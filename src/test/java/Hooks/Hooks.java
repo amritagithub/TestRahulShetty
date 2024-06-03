@@ -10,7 +10,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
-public class Hooks extends Base{
+public class Hooks extends SubmitOrder{
 
 	WebDriver driver;
 	@BeforeTest
